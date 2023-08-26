@@ -16,7 +16,7 @@ public:
         y = 120 x = 1 x%10 = 1 i = 0 pow(10,i) = 1 (x%10)*(pow(10,i)) = 1
         0
         **/
-        int y = 0; //Initializing y = 1 gives me the right answer in VScode but why
+        long y = 0; //Initializing y = 1 gives me the right answer in VScode but why
         int temp = x;
         if(x < 0){
             return false;
