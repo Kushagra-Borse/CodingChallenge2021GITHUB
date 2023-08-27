@@ -24,3 +24,4 @@ class Solution(object):
                 sum = sum + pri[s[i]]
                 prev = pri[s[i]]
         return sum
+        
