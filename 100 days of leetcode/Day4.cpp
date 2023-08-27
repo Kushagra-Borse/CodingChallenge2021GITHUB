@@ -34,44 +34,63 @@ public:
             {'M', 1000}
         };
         //Initialize stack
-        stack<int> st;
         //Sum
         int sum = 0;
-        int value = pri[s[0]];
-        sum += value;
-        st.push(value);
-        //Method one
-        //------------
-        // for(int i = 1; i < s.length(); i++){
-        //     value = pri[s[i]];
-        //     if(st.top() < value){
-        //         int temp;
-        //         temp = st.top() * (-1);
-        //         st.pop();
-        //         st.push(temp);
-        //     }
-        //     st.push(value);
-        // }
-        // for(int i = 0; i < s.length(); i++){
-        //     sum += st.top();
-        //     st.pop();
-        // }
-        //----------------
+        // int value = pri[s[0]];
+        // // stack<int> st;
+        // //sum += value;
+        // //st.push(value);
+        // //Method one
+        // //------------
+        // // for(int i = 1; i < s.length(); i++){
+        // //     value = pri[s[i]];
+        // //     if(st.top() < value){
+        // //         int temp;
+        // //         temp = st.top() * (-1);
+        // //         st.pop();
+        // //         st.push(temp);
+        // //     }
+        // //     st.push(value);
+        // // }
+        // // for(int i = 0; i < s.length(); i++){
+        // //     sum += st.top();
+        // //     st.pop();
+        // // }
+        // //----------------
 
-        //Another method
-        //--------------------
-        for(int i = 1; i < s.length(); i++){
-            value = pri[s[i]];
-            if(st.top() < value){
-                sum = sum - st.top() + - st.top() + value;
-                st.push(value);
+        // //Another method
+        // //--------------------
+        // int value = pri[s[0]];
+        // // stack<int> st;
+        // //sum += value;
+        // //st.push(value);
+        // // for(int i = 1; i < s.length(); i++){
+        // //     value = pri[s[i]];
+        // //     if(st.top() < value){
+        // //         sum = sum - st.top() + - st.top() + value;
+        // //         st.push(value);
+        // //     }
+        // //     else{
+        // //         sum += value;
+        // //         st.push(value);
+        // //     }
+        // // }
+        // // -----------------
+
+        //Now without stack
+        //Excellent runtime adn better memory
+        int prev = pri[s[0]];
+        sum = sum + prev;
+        for(int i = 1; i < s.length() ; i++){
+            if(prev < pri[s[i]]){
+                sum = sum - prev - prev + pri[s[i]];
             }
             else{
-                sum += value;
-                st.push(value);
+                sum = sum + pri[s[i]];
             }
+            prev = pri[s[i]];
+
         }
-        // -----------------
 
         return sum;
 
