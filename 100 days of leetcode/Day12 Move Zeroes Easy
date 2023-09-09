@@ -26,3 +26,41 @@ Constraints:
  
 
 Follow up: Could you minimize the total number of operations done?
+
+
+
+
+
+To solve this problem efficiently, you can use a two-pointer approach. This approach avoids making a copy of the array and minimizes the total number of operations.
+
+Here's a step-by-step explanation of the algorithm:
+
+1. Initialize two pointers, `left` and `right`, both initially pointing to the beginning of the array.
+
+2. Iterate through the array using the `right` pointer:
+   - If `nums[right]` is not zero, swap `nums[left]` and `nums[right]` and increment both `left` and `right` pointers.
+   - If `nums[right]` is zero, increment only the `right` pointer.
+
+3. Continue this process until the `right` pointer reaches the end of the array. At this point, all non-zero elements will have been moved to the front, and all zeros will be at the end.
+
+Here's the C++ code that implements this algorithm:
+
+```cpp
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int left = 0, right = 0;
+        int n = nums.size();
+
+        while (right < n) {
+            if (nums[right] != 0) {
+                swap(nums[left], nums[right]);
+                left++;
+            }
+            right++;
+        }
+    }
+};
+```
+
+This code efficiently moves all zeros to the end of the array while maintaining the relative order of non-zero elements. It does this in-place and minimizes the number of operations.
