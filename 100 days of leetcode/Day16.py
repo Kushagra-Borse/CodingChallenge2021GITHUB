@@ -8,3 +8,8 @@ class Solution(object):
         li.reverse()
         ans = " ".join(li)
         return ans
+
+
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        return ' '.join(s.split()[::-1])
